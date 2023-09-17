@@ -1,3 +1,5 @@
+// PHẠM ĐOÀN THẾ ANH 21013311
+
 // danh sách liên kết đôi: 3,4,5,6,7,8,9,10,11,12,13,14,15,16
 #include <stdio.h>
 #include <stdlib.h>
