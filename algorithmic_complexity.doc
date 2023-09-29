@@ -1,0 +1,516 @@
+//////////////////// R-4.2
+
+Để xác định giá trị của n₀ sao cho thuật toán A tốt hơn thuật toán B khi n ≥ n₀, chúng ta cần so sánh hàm thời gian chạy của họ, được cho bởi:
+
+Thuật toán A: 8n log(n)
+Thuật toán B: 2n^2
+
+Chúng ta muốn tìm giá trị n₀ sao cho A tốt hơn B khi n ≥ n₀, có nghĩa là A có thời gian chạy thấp hơn đối với các giá trị lớn của n. Nói cách khác, chúng ta muốn tìm n₀ sao cho:
+
+8n₀ log(n₀) < 2n₀^2
+
+Hãy đơn giản hóa bất đẳng thức này:
+
+Chia cả hai bên cho n₀:
+8 log(n₀) < 2n₀
+
+Bây giờ, chia cả hai bên cho 2:
+4 log(n₀) < n₀
+
+Để cô lập n₀, chúng ta có thể sử dụng các tính chất của logarithm. Chia cả hai bên cho 4:
+log(n₀) < n₀/4
+
+Để loại bỏ logarithm, chúng ta có thể lấy mũ của cả hai bên (với cơ số 2, ví dụ, để đơn giản hóa):
+
+2^(log(n₀)) < 2^(n₀/4)
+
+Bây giờ, chúng ta có:
+
+n₀ < 2^(n₀/4)
+
+Bất đẳng thức này không có một giải pháp đại số đơn giản, vì vậy chúng ta có thể sử dụng phương pháp số hoặc ước tính để tìm giá trị phù hợp cho n₀. Bạn có thể sử dụng máy tính, phần mềm bảng tính hoặc trình giải số để ước tính giá trị của n₀.
+
+Với mục đích thực tế, bạn có thể thấy rằng một giá trị tương đối nhỏ của n₀, chẳng hạn như 10 hoặc 20, là đủ để A tốt hơn B đối với hầu hết các giá trị hợp lý của n trong các tình huống thực tế.
+
+
+
+//////////////////// R-4.3
+
+Để xác định giá trị của n₀ sao cho thuật toán A tốt hơn thuật toán B khi n ≥ n₀, chúng ta cần so sánh hàm thời gian chạy của họ, được cho bởi:
+
+Thuật toán A: 40n^2
+Thuật toán B: 2n^3
+
+Chúng ta muốn tìm n₀ sao cho A tốt hơn B khi n ≥ n₀, có nghĩa là A có thời gian chạy thấp hơn đối với các giá trị lớn của n. Nói cách khác, chúng ta muốn tìm n₀ sao cho:
+
+40n₀^2 < 2n₀^3
+
+Hãy đơn giản hóa bất đẳng thức này:
+
+Chia cả hai bên cho 2:
+20n₀^2 < n₀^3
+
+Bây giờ, chia cả hai bên cho n₀^2:
+20 < n₀
+
+Vậy n₀ cần phải lớn hơn 20 để thuật toán A tốt hơn thuật toán B khi n ≥ n₀.
+
+Trong ngữ cảnh thực tế, điều này có nghĩa là thuật toán A tốt hơn cho các giá trị lớn của n, bắt đầu từ n₀ = 21 trở đi.
+
+
+
+//////////////////// R-4.14
+
+Để chứng minh rằng nếu d(n) là O(f(n)), thì ad(n) cũng là O(f(n)) cho bất kỳ hằng số a > 0, chúng ta có thể sử dụng định nghĩa chính thức của notation "Big O".
+
+Giả sử d(n) là O(f(n)), điều này có nghĩa rằng tồn tại các hằng số dương C và n₀ sao cho:
+
+|d(n)| ≤ C * |f(n)| cho tất cả n ≥ n₀.
+
+Bây giờ, hãy xem xét ad(n), trong đó a là một hằng số dương. Chúng ta muốn chứng minh rằng ad(n) cũng là O(f(n)). Để làm điều này, chúng ta cần tìm các hằng số A và n₁ (có thể khác với C và n₀) sao cho:
+
+|ad(n)| ≤ A * |f(n)| cho tất cả n ≥ n₁.
+
+Chúng ta có thể chọn A = a * C vì a * C vẫn là một hằng số dương (vì cả a và C đều là dương), và điều này giúp đơn giản hóa bằng chứng. Bây giờ, chúng ta cần tìm n₁.
+
+Hãy phân tích |ad(n)|:
+
+|ad(n)| = |a| * |d(n)|.
+
+Vì |d(n)| được chặn dưới bởi C * |f(n)| cho n ≥ n₀, nên chúng ta có:
+
+|ad(n)| = |a| * |d(n)| ≤ |a| * (C * |f(n)|).
+
+Bây giờ, chúng ta có |ad(n)| ≤ (|a| * C) * |f(n)|, và vì |a| * C cũng là một hằng số, hãy gọi nó là B:
+
+|ad(n)| ≤ B * |f(n)|.
+
+Do đó, chúng ta đã tìm thấy các hằng số B và n₁ (có thể khác với C và n₀) sao cho |ad(n)| ≤ B * |f(n)| cho tất cả n ≥ n₁.
+
+Do đó, chúng ta đã chứng minh rằng ad(n) là O(f(n)) cho bất kỳ hằng số a > 0.
+
+
+
+//////////////////// R-4.15
+
+Để chứng minh rằng nếu d(n) là O(f(n)) và e(n) là O(g(n)), thì tích d(n)e(n) cũng là O(f(n)g(n)), chúng ta có thể sử dụng định nghĩa chính thức của notation "Big O".
+
+Với giả thiết d(n) là O(f(n)), điều này có nghĩa rằng tồn tại các hằng số dương C1 và n1 sao cho:
+
+|d(n)| ≤ C1 * |f(n)| đối với mọi n ≥ n1.
+
+Tương tự, với giả thiết e(n) là O(g(n)), điều này có nghĩa rằng tồn tại các hằng số dương C2 và n2 sao cho:
+
+|e(n)| ≤ C2 * |g(n)| đối với mọi n ≥ n2.
+
+Bây giờ, hãy xem xét tích d(n)e(n). Chúng ta muốn chứng minh rằng d(n)e(n) là O(f(n)g(n)). Để làm điều này, chúng ta cần tìm các hằng số C và n₀ (có thể khác với C1, n1, C2 và n2) sao cho:
+
+|d(n)e(n)| ≤ C * |f(n)g(n)| đối với mọi n ≥ n₀.
+
+Chúng ta có thể chọn C = C1 * C2 vì đó vẫn là một hằng số dương (vì cả C1 và C2 đều là dương), và điều này giúp đơn giản hóa bằng chứng. Bây giờ, chúng ta cần tìm n₀.
+
+Hãy phân tích |d(n)e(n)|:
+
+|d(n)e(n)| = |d(n)| * |e(n)|.
+
+Vì |d(n)| được chặn dưới bởi C1 * |f(n)| cho n ≥ n1 và |e(n)| được chặn dưới bởi C2 * |g(n)| cho n ≥ n2, chúng ta có:
+
+|d(n)e(n)| = |d(n)| * |e(n)| ≤ (C1 * |f(n)|) * (C2 * |g(n)|).
+
+Bây giờ, chúng ta có |d(n)e(n)| ≤ (C1 * C2) * |f(n)g(n)|, và vì C1 * C2 cũng là một hằng số, hãy gọi nó là C:
+
+|d(n)e(n)| ≤ C * |f(n)g(n)|.
+
+Vậy, chúng ta đã tìm thấy các hằng số C và n₀ (có thể khác với C1, n1, C2 và n2) sao cho |d(n)e(n)| ≤ C * |f(n)g(n)| đối với mọi n ≥ n₀.
+
+Do đó, chúng ta đã chứng minh rằng d(n)e(n) là O(f(n)g(n)) khi d(n) là O(f(n)) và e(n) là O(g(n)).
+
+
+
+//////////////////// R-4.16
+
+Để chứng minh rằng nếu d(n) là O(f(n)) và e(n) là O(g(n)), thì tổng d(n) + e(n) cũng là O(f(n) + g(n)), chúng ta có thể sử dụng định nghĩa chính thức của notation "Big O".
+
+Với giả thiết d(n) là O(f(n)), điều này có nghĩa rằng tồn tại các hằng số dương C1 và n1 sao cho:
+
+|d(n)| ≤ C1 * |f(n)| đối với mọi n ≥ n1.
+
+Tương tự, với giả thiết e(n) là O(g(n)), điều này có nghĩa rằng tồn tại các hằng số dương C2 và n2 sao cho:
+
+|e(n)| ≤ C2 * |g(n)| đối với mọi n ≥ n2.
+
+Bây giờ, hãy xem xét tổng d(n) + e(n). Chúng ta muốn chứng minh rằng d(n) + e(n) là O(f(n) + g(n)). Để làm điều này, chúng ta cần tìm các hằng số C và n₀ (có thể khác với C1, n1, C2 và n2) sao cho:
+
+|d(n) + e(n)| ≤ C * |f(n) + g(n)| đối với mọi n ≥ n₀.
+
+Chúng ta có thể chọn C = C1 + C2 vì đó vẫn là một hằng số dương (vì cả C1 và C2 đều là dương), và điều này giúp đơn giản hóa bằng chứng. Bây giờ, chúng ta cần tìm n₀.
+
+Hãy phân tích |d(n) + e(n)|:
+
+|d(n) + e(n)| ≤ |d(n)| + |e(n)|.
+
+Vì |d(n)| được chặn dưới bởi C1 * |f(n)| cho n ≥ n1 và |e(n)| được chặn dưới bởi C2 * |g(n)| cho n ≥ n2, chúng ta có:
+
+|d(n) + e(n)| ≤ (C1 * |f(n)|) + (C2 * |g(n)|).
+
+Bây giờ, chúng ta có |d(n) + e(n)| ≤ (C1 + C2) * (|f(n)| + |g(n)|), và vì C1 + C2 cũng là một hằng số, hãy gọi nó là C:
+
+|d(n) + e(n)| ≤ C * |f(n) + g(n)|.
+
+Vậy, chúng ta đã tìm thấy các hằng số C và n₀ (có thể khác với C1, n1, C2 và n2) sao cho |d(n) + e(n)| ≤ C * |f(n) + g(n)| đối với mọi n ≥ n₀.
+
+Do đó, chúng ta đã chứng minh rằng d(n) + e(n) là O(f(n) + g(n)) khi d(n) là O(f(n)) và e(n) là O(g(n)).
+
+
+//////////////////// R-4.17
+
+Chúng ta sẽ chứng minh rằng nếu d(n) là O(f(n)) và e(n) là O(g(n)), thì d(n) - e(n) không nhất thiết là O(f(n)g(n)). Điều này có thể được minh chứng bằng một ví dụ đơn giản.
+
+Xét d(n) = n, f(n) = n, e(n) = n, và g(n) = n^2. Trong trường hợp này, d(n) là O(f(n)) vì n chặn dưới bởi n khi n ≥ 1, và e(n) là O(g(n)) vì n cũng chặn dưới bởi n^2 khi n ≥ 1.
+
+Bây giờ, hãy xem xét d(n) - e(n):
+
+d(n) - e(n) = n - n = 0.
+
+Chúng ta muốn kiểm tra xem d(n) - e(n) có phải là O(f(n)g(n)) hay không. Nếu nó là O(f(n)g(n)), thì tồn tại một hằng số dương C và một giá trị n₀ sao cho:
+
+|d(n) - e(n)| ≤ C * |f(n)g(n)| cho tất cả n ≥ n₀.
+
+Nhưng trong trường hợp này, chúng ta có:
+
+|0| = 0.
+
+Và bất kỳ hằng số dương C nào cũng không thể làm cho 0 ≤ C * |n * n^2| vì bất kỳ giá trị nào của n cũng làm cho cả hai bên của bất đẳng thức đều bằng 0.
+
+Do đó, chúng ta không thể tìm thấy một hằng số dương C và một giá trị n₀ để thỏa mãn điều kiện định nghĩa của O(f(n)g(n)), và do đó, d(n) - e(n) không phải là O(f(n)g(n)) trong trường hợp này.
+
+
+
+//////////////////// R-4.18
+
+Để chứng minh rằng nếu d(n) là O(f(n)) và f(n) là O(g(n)), thì d(n) cũng là O(g(n)), chúng ta có thể sử dụng định nghĩa chính thức của notation "Big O".
+
+Với giả thiết d(n) là O(f(n)), điều này có nghĩa rằng tồn tại các hằng số dương C1 và n1 sao cho:
+
+|d(n)| ≤ C1 * |f(n)| đối với mọi n ≥ n1.
+
+Tương tự, với giả thiết f(n) là O(g(n)), điều này có nghĩa rằng tồn tại các hằng số dương C2 và n2 sao cho:
+
+|f(n)| ≤ C2 * |g(n)| đối với mọi n ≥ n2.
+
+Bây giờ, hãy xem xét d(n). Chúng ta muốn chứng minh rằng d(n) cũng là O(g(n)). Để làm điều này, chúng ta cần tìm các hằng số C và n₀ (có thể khác với C1, n1, C2 và n2) sao cho:
+
+|d(n)| ≤ C * |g(n)| đối với mọi n ≥ n₀.
+
+Chúng ta có thể chọn C = C1 * C2 vì đó vẫn là một hằng số dương (vì cả C1 và C2 đều là dương), và điều này giúp đơn giản hóa bằng chứng. Bây giờ, chúng ta cần tìm n₀.
+
+Hãy phân tích |d(n)|:
+
+|d(n)| ≤ C1 * |f(n)| (theo định nghĩa của d(n) là O(f(n))).
+
+Vì |f(n)| được chặn dưới bởi C2 * |g(n)| cho n ≥ n2, chúng ta có:
+
+|f(n)| ≤ C2 * |g(n)|.
+
+Bây giờ, kết hợp những bất đẳng thức này:
+
+|d(n)| ≤ C1 * |f(n)| ≤ C1 * (C2 * |g(n)|).
+
+Chúng ta có thể rút gọn thành:
+
+|d(n)| ≤ (C1 * C2) * |g(n)|.
+
+Vậy, chúng ta đã tìm thấy các hằng số C và n₀ (có thể khác với C1, n1, C2 và n2) sao cho |d(n)| ≤ C * |g(n)| đối với mọi n ≥ n₀.
+
+Do đó, chúng ta đã chứng minh rằng d(n) là O(g(n)) khi d(n) là O(f(n)) và f(n) là O(g(n)).
+
+
+
+//////////////////// R-4.19
+
+Để chứng minh rằng \(O(\max(f(n), g(n))) = O(f(n) + g(n))\), chúng ta cần chứng minh cả hai hướng của sự tương đương này:
+
+1. \(O(\max(f(n), g(n))) \subseteq O(f(n) + g(n))\):
+
+Giả sử \(h(n) = \max(f(n), g(n))\). Theo định nghĩa của notation "Big O", \(O(h(n))\) đại diện cho một giới hạn trên của hàm \(h(n)\). Vì \(h(n) \leq f(n) + g(n)\) đối với tất cả \(n\), ta có \(O(h(n)) \subseteq O(f(n) + g(n))\).
+
+2. \(O(f(n) + g(n)) \subseteq O(\max(f(n), g(n)))\):
+
+Giả sử \(k(n) = f(n) + g(n)\). Theo định nghĩa của notation "Big O", \(O(k(n))\) đại diện cho một giới hạn trên của hàm \(k(n)\). Bây giờ, hãy xem xét \(\max(f(n), g(n))\). Chúng ta biết rằng \(\max(f(n), g(n)) \leq f(n) + g(n)\) đối với tất cả \(n\), điều này ngụ ý rằng \(O(\max(f(n), g(n))) \subseteq O(f(n) + g(n))\).
+
+Vì chúng ta đã chứng minh được cả hai hướng của sự bao hàm, nên chúng ta có thể kết luận rằng \(O(\max(f(n), g(n))) = O(f(n) + g(n))\). Điều này có nghĩa rằng hai cách biểu diễn này tương đương với nhau trong việc đại diện cho giới hạn trên của hàm.
+
+
+
+//////////////////// R-4.20
+
+Để chứng minh rằng \(f(n)\) là \(O(g(n))\) nếu và chỉ nếu \(g(n)\) là \(\Omega(f(n))\), chúng ta cần chứng minh cả hai hướng của sự tương đương này:
+
+1. Nếu \(f(n)\) là \(O(g(n))\), thì \(g(n)\) là \(\Omega(f(n))\):
+
+   Nếu \(f(n)\) là \(O(g(n))\), điều này có nghĩa tồn tại các hằng số dương \(C\) và \(n_0\) sao cho \(|f(n)| \leq C|g(n)|\) cho tất cả \(n \geq n_0\). Đây là định nghĩa của \(f(n)\) là \(O(g(n))\).
+
+   Để chứng minh rằng \(g(n)\) là \(\Omega(f(n))\), chúng ta cần tìm các hằng số dương \(k\) và \(n_1\) sao cho \(|g(n)| \geq k|f(n)|\) cho tất cả \(n \geq n_1\).
+
+   Vì chúng ta có \(|f(n)| \leq C|g(n)|\) cho tất cả \(n \geq n_0\), chúng ta có thể sắp xếp lại bất đẳng thức này để được \(|g(n)| \geq \frac{1}{C}|f(n)|\). Bây giờ, hãy chọn \(k = \frac{1}{C}\) và \(n_1 = n_0\). Sau đó, chúng ta đã chứng minh được rằng \(g(n)\) là \(\Omega(f(n))\).
+
+2. Nếu \(g(n)\) là \(\Omega(f(n))\), thì \(f(n)\) là \(O(g(n))\):
+
+   Nếu \(g(n)\) là \(\Omega(f(n))\), điều này có nghĩa tồn tại các hằng số dương \(k\) và \(n_1\) sao cho \(|g(n)| \geq k|f(n)|\) cho tất cả \(n \geq n_1\). Đây là định nghĩa của \(g(n)\) là \(\Omega(f(n))\).
+
+   Để chứng minh rằng \(f(n)\) là \(O(g(n))\), chúng ta cần tìm các hằng số dương \(C\) và \(n_0\) sao cho \(|f(n)| \leq C|g(n)|\) cho tất cả \(n \geq n_0\).
+
+   Vì chúng ta có \(|g(n)| \geq k|f(n)|\) cho tất cả \(n \geq n_1\), chúng ta có thể sắp xếp lại bất đẳng thức này để được \(|f(n)| \leq \frac{1}{k}|g(n)|\). Bây giờ, hãy chọn \(C = \frac{1}{k}\) và \(n_0 = n_1\). Sau đó, chúng ta đã chứng minh được rằng \(f(n)\) là \(O(g(n))\).
+
+Do đó, chúng ta đã chứng minh cả hai hướng của sự tương đương, và chúng ta có thể kết luận rằng \(f(n)\) là \(O(g(n))\) nếu và chỉ nếu \(g(n)\) là \(\Omega(f(n))\).
+
+
+
+//////////////////// R-4.21
+
+Để chứng minh rằng nếu \(p(n)\) là một đa thức theo \(n\), thì \(\log p(n)\) là \(O(\log n)\), chúng ta có thể sử dụng tính chất của logarithm và định nghĩa của notation "Big O".
+
+Hãy giả sử \(p(n)\) là một đa thức theo \(n\). Khi đó, chúng ta có thể viết \(p(n)\) dưới dạng:
+
+\[p(n) = a_k n^k + a_{k-1} n^{k-1} + \ldots + a_1 n + a_0\]
+
+Ở đây, \(a_k, a_{k-1}, \ldots, a_1, a_0\) là các hằng số và \(k\) là bậc cao nhất của đa thức.
+
+Bây giờ, hãy xem xét \(\log p(n)\):
+
+\[\log p(n) = \log \left(a_k n^k + a_{k-1} n^{k-1} + \ldots + a_1 n + a_0\right)\]
+
+Chúng ta muốn chứng minh rằng \(\log p(n)\) là \(O(\log n)\). Để làm điều này, chúng ta cần tìm các hằng số \(C\) và \(n_0\) sao cho:
+
+\[\left|\log p(n)\right| \leq C \cdot \log n\]
+
+đối với tất cả \(n \geq n_0\).
+
+Do logarithm có tính chất \(\log(x + y) \leq \log x + \log y\), chúng ta có thể viết lại:
+
+\[\log p(n) \leq \log \left(a_k n^k + a_{k-1} n^{k-1} + \ldots + a_1 n + a_0\right)\]
+
+\[\leq \log \left(a_k n^k\right) + \log \left(1 + \frac{a_{k-1}}{a_k} n^{-1} + \ldots + \frac{a_1}{a_k} n^{-(k-1)} + \frac{a_0}{a_k} n^{-k}\right)\]
+
+Sử dụng tính chất \(\log(xy) = \log x + \log y\), chúng ta có thể tiếp tục rút gọn:
+
+\[\log(a_k) + \log n^k + \log \left(1 + \frac{a_{k-1}}{a_k} n^{-1} + \ldots + \frac{a_1}{a_k} n^{-(k-1)} + \frac{a_0}{a_k} n^{-k}\right)\]
+
+Lưu ý rằng \(\log \left(1 + \frac{a_{k-1}}{a_k} n^{-1} + \ldots + \frac{a_1}{a_k} n^{-(k-1)} + \frac{a_0}{a_k} n^{-k}\right)\) là một hàm logarithm của \(n\) với các thành phần giảm dần theo bậc, và nó sẽ bị áp đảo bởi thành phần có bậc cao nhất khi \(n\) trở nên lớn.
+
+Vậy nên, chúng ta có thể khẳng định rằng tồn tại các hằng số \(C_1\) và \(n_1\) sao cho:
+
+\[\log \left(1 + \frac{a_{k-1}}{a_k} n^{-1} + \ldots + \frac{a_1}{a_k} n^{-(k-1)} + \frac{a_0}{a_k} n^{-k}\right) \leq C_1 \cdot \log n\]
+
+đối với tất cả \(n \geq n_1\).
+
+Bây giờ, chúng ta có thể kết hợp tất cả các thành phần lại với nhau và tìm các hằng số \(C\) và \(n_0\) sao cho:
+
+\[\left|\log p(n)\right| \leq \log(a_k) + k \cdot \log n + C_1 \cdot \log n\]
+
+\[\leq (\log(a_k) + k \cdot C_1) \cdot \log n\]
+
+Vậy nên, chúng ta đã chứng minh được rằng \(\left|\log p(n)\right| \leq (\log(a_k) + k \cdot C_1) \cdot \log n\) đối với tất cả \(n \geq n_0\), trong đó \(n_0 = \max(n_1, 1)\) và \(C = \log(a_k) + k \cdot C_1\).
+
+Điều này chứng tỏ rằng \(\log p(n)\) là \(O(\log n)\) khi \(p(n)\) là một đa thức theo \(n\).
+
+
+
+//////////////////// R-4.22
+
+Để chứng minh rằng \((n + 1)^5\) là \(O(n^5)\), chúng ta cần tìm các hằng số dương \(C\) và \(n_0\) sao cho \((n + 1)^5 \leq C \cdot n^5\) đối với tất cả \(n \geq n_0\).
+
+Hãy đơn giản hóa biểu thức \((n + 1)^5\):
+
+\[(n + 1)^5 = n^5 + 5n^4 + 10n^3 + 10n^2 + 5n + 1\]
+
+Bây giờ, chúng ta tập trung vào các thành phần có bậc cao nhất:
+
+\[(n + 1)^5 = n^5 + \text{các thành phần có bậc thấp hơn}\]
+
+Chúng ta có thể thấy rằng tất cả các thành phần khác (có bậc thấp hơn) đều là số dương, vì vậy \((n + 1)^5\) lớn hơn hoặc bằng \(n^5\).
+
+Vì vậy, chúng ta có thể chọn \(C = 1\) và \(n_0 = 0\) vì đối với tất cả \(n \geq 0\), chúng ta có:
+
+\[(n + 1)^5 \leq n^5\]
+
+Do đó, chúng ta đã chứng minh được rằng \((n + 1)^5\) là \(O(n^5)\) với \(C = 1\) và \(n_0 = 0\).
+
+
+
+//////////////////// R-4.23
+
+Để chứng minh rằng \(2^{n+1}\) là \(O(2^n)\), chúng ta cần tìm các hằng số dương \(C\) và \(n_0\) sao cho \(2^{n+1} \leq C \cdot 2^n\) đối với tất cả \(n \geq n_0\).
+
+Hãy đơn giản hóa bất đẳng thức:
+
+\[2^{n+1} \leq C \cdot 2^n\]
+
+\[2^n \cdot 2 \leq C \cdot 2^n\]
+
+\[2 \leq C\]
+
+Bây giờ, chúng ta đã tìm được rằng với bất kỳ hằng số \(C\) nào lớn hơn hoặc bằng 2, bất đẳng thức \(2^{n+1} \leq C \cdot 2^n\) sẽ luôn đúng đối với mọi \(n\).
+
+Vì vậy, chúng ta có thể chọn \(C = 2\) và \(n_0 = 0\) vì đối với tất cả \(n \geq 0\), chúng ta có:
+
+\[2^{n+1} \leq 2 \cdot 2^n\]
+
+Do đó, chúng ta đã chứng minh được rằng \(2^{n+1}\) là \(O(2^n)\) với \(C = 2\) và \(n_0 = 0\).
+
+
+
+//////////////////// R-4.24
+
+Để chứng minh rằng \(n\) là \(O(n \log n)\), chúng ta cần tìm các hằng số dương \(C\) và \(n_0\) sao cho \(n \leq C \cdot n \log n\) đối với tất cả \(n \geq n_0\).
+
+Hãy đơn giản hóa bất đẳng thức:
+
+\[n \leq C \cdot n \log n\]
+
+Chia cả hai vế cho \(n\), giả sử \(n > 0\) (vì \(n\) không thể bằng không trong ngữ cảnh của notation Big O):
+
+\[1 \leq C \cdot \log n\]
+
+Bây giờ, hãy lấy logarithm cơ số e (natural logarithm) của cả hai vế của bất đẳng thức:
+
+\[\ln 1 \leq \ln (C \cdot \ln n)\]
+
+\[0 \leq \ln C + \ln (\ln n)\]
+
+Vì \(\ln n\) luôn lớn hơn hoặc bằng 1 (đối với \(n \geq 1\)), chúng ta có thể tiếp tục rút gọn:
+
+\[0 \leq \ln C + \ln (\ln n) \leq \ln C + \ln n\]
+
+Bây giờ, chúng ta có thể thấy rằng với bất kỳ hằng số \(C\) nào lớn hơn hoặc bằng 1, bất đẳng thức \(0 \leq \ln C + \ln n\) luôn đúng đối với tất cả \(n\) lớn hơn hoặc bằng 1.
+
+Vì vậy, chúng ta có thể chọn \(C = 2\) (hoặc bất kỳ hằng số lớn hơn hoặc bằng 1) và \(n_0 = 1\) vì đối với tất cả \(n \geq 1\), chúng ta có:
+
+\[n \leq 2n \ln n\]
+
+Do đó, chúng ta đã chứng minh được rằng \(n\) là \(O(n \log n)\) với \(C = 2\) và \(n_0 = 1\).
+
+
+
+//////////////////// R-4.25
+
+Để chứng minh rằng \(n^2\) là \(\Omega(n \log n)\), chúng ta cần tìm các hằng số dương \(k\) và \(n_0\) sao cho \(n^2 \geq k \cdot n \log n\) đối với tất cả \(n \geq n_0\).
+
+Hãy đơn giản hóa bất đẳng thức:
+
+\[n^2 \geq k \cdot n \log n\]
+
+Chia cả hai vế cho \(n\) (giả sử \(n > 0\)):
+
+\[n \geq k \cdot \log n\]
+
+Bây giờ, hãy lấy logarithm cơ số e (natural logarithm) của cả hai vế của bất đẳng thức:
+
+\[\ln n \geq \ln (k \cdot \ln n)\]
+
+\[\ln n \geq \ln k + \ln(\ln n)\]
+
+Vì \(\ln(\ln n)\) là một giá trị dương đối với \(n \geq 2\) (vì \(\ln(\ln 2) > 0\)), chúng ta có thể rút gọn thêm:
+
+\[\ln n \geq \ln k\]
+
+Bây giờ, chúng ta có thể biểu diễn điều này như sau:
+
+\[k \leq 2^{\ln n} = n\]
+
+Vậy nên, chúng ta có thể chọn \(k = 1\) và \(n_0 = 2\) vì đối với tất cả \(n \geq 2\), chúng ta có:
+
+\[n^2 \geq n \log n\]
+
+Do đó, chúng ta đã chứng minh được rằng \(n^2\) là \(\Omega(n \log n)\) với \(k = 1\) và \(n_0 = 2\).
+
+
+
+//////////////////// R-4.26
+
+Để chứng minh rằng \(n\) là \(\Omega(n)\), chúng ta cần tìm các hằng số dương \(k\) và \(n_0\) sao cho \(n \geq k \cdot n\) đối với tất cả \(n \geq n_0\).
+
+Hãy đơn giản hóa bất đẳng thức:
+
+\[n \geq k \cdot n\]
+
+Chia cả hai vế cho \(n\) (giả sử \(n > 0\)):
+
+\[1 \geq k\]
+
+Bây giờ, chúng ta có thể chọn bất kỳ hằng số dương nào cho \(k\) như \(k = 0.5\) (hoặc bất kỳ giá trị nào nhỏ hơn hoặc bằng 1), và \(n_0 = 1\).
+
+Đối với tất cả \(n \geq 1\), chúng ta có:
+
+\[n \geq 0.5 \cdot n\]
+
+Do đó, chúng ta đã chứng minh được rằng \(n\) là \(\Omega(n)\) với \(k = 0.5\) và \(n_0 = 1\).
+
+
+
+
+
+
+//////////////////// C-4.36
+
+Để tìm ra mười phần tử lớn nhất trong một mảng có kích thước n một cách hiệu quả, bạn có thể sử dụng một biến thể của thuật toán Quickselect kết hợp với cấu trúc dữ liệu heap tối thiểu (min-heap). Dưới đây là mô tả tổng quan về thuật toán:
+
+1. Khởi tạo một min-heap (hàng đợi ưu tiên) với mười phần tử đầu tiên trong mảng.
+
+2. Đối với mỗi phần tử còn lại trong mảng (từ phần tử thứ 11 đến phần tử thứ n), thực hiện các bước sau:
+   a. So sánh phần tử hiện tại với phần tử nhỏ nhất trong min-heap (gốc của heap).
+   b. Nếu phần tử hiện tại lớn hơn phần tử nhỏ nhất trong min-heap (gốc của heap), loại bỏ phần tử nhỏ nhất ra khỏi min-heap và chèn phần tử hiện tại vào min-heap.
+   c. Nếu phần tử hiện tại nhỏ hơn hoặc bằng phần tử nhỏ nhất trong min-heap, tiếp tục với phần tử tiếp theo.
+
+3. Sau khi xử lý tất cả các phần tử trong mảng, min-heap sẽ chứa mười phần tử lớn nhất.
+
+Thời gian chạy của thuật toán này là O(n log k), trong đó n là kích thước của mảng đầu vào và k là số lượng phần tử lớn nhất bạn muốn tìm (trong trường hợp này, k = 10). Phần tốn nhiều thời gian nhất của thuật toán là việc chèn và loại bỏ khỏi min-heap, mỗi lần thao tác này tốn O(log k) thời gian.
+
+Thuật toán này hiệu quả vì nó không yêu cầu sắp xếp toàn bộ mảng, mà chỉ duy trì một min-heap của k phần tử lớn nhất, giảm đáng kể độ phức tạp thời gian so với việc sắp xếp toàn bộ mảng, mà thường tốn O(n log n) thời gian với thuật toán sắp xếp thông thường.
+
+
+
+//////////////////// C-4.43
+
+Để tìm giá trị nhỏ nhất của C sao cho Bob có thể biết rằng một trong những người bạn của anh ấy đã đến thăm anh ấy/cô ấy với số lần tối đa được phép, chúng ta có thể phân tích tình huống:
+
+Bob có n người bạn và mỗi người bạn tôi có thể truy cập trang web nhiều nhất là i lần. Điều này có nghĩa là số lượt truy cập tối đa của một người bạn bất kỳ là n (bạn n có thể truy cập n lần).
+
+Để đảm bảo Bob có thể biết khi nào một trong những người bạn của anh ấy đã truy cập số lần tối đa được phép, anh ấy cần theo dõi tổng số lượt truy cập, C. Khi C đạt hoặc vượt quá tổng số lượt truy cập tối đa được phép cho mỗi người bạn, thì Bob có thể chắc chắn rằng ít nhất một người bạn đã ghé thăm với số lần tối đa.
+
+Tổng số lượt truy cập tối đa được phép của mỗi người bạn có thể được tính như sau:
+
+\[1 + 2 + 3 + \ldots + n = \frac{n(n+1)}{2}\]
+
+Vì vậy, Bob cần theo dõi tổng số lượt truy cập C sao cho:
+
+\[C \geq \frac{n(n+1)}{2}\]
+
+Để tìm giá trị nhỏ nhất của C, chúng ta cần xét giá trị nhỏ nhất có thể có của n, là 1 (Bob chỉ có một người bạn). Trong trường hợp này:
+
+\[C \geq \frac{1(1+1)}{2} = 1\]
+
+Vì vậy, giá trị tối thiểu của C là 1. Bob cần theo dõi ít ​​nhất 1 lượt truy cập để biết rằng người bạn duy nhất của anh ấy đã truy cập số lần tối đa được phép.
+
+Nói chung, với bất kỳ giá trị nào của n (số lượng bạn bè), Bob cần theo dõi số lượt truy cập sao cho:
+
+\[C \geq \frac{n(n+1)}{2}\]
+
+Điều này đảm bảo rằng Bob có thể biết khi nào một trong những người bạn của anh ấy đã truy cập số lần tối đa được phép.
+
+
+
+//////////////////// C-4.45
+
+//////////////////// C-4.49
+
+
+
+
+
+
+
+
+
+
+
