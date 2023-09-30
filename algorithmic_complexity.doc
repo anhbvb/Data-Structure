@@ -505,15 +505,40 @@ Nói chung, với bất kỳ giá trị nào của n (số lượng bạn bè), 
 
 //////////////////// C-4.45
 
+Bạn có thể giải quyết vấn đề này bằng cách sử dụng phép XOR, mà có tính chất là XOR một số với chính nó sẽ cho kết quả là 0. Dưới đây là một thuật toán O(n) với không gian bổ sung O(1):
+
+1. Khởi tạo một biến `missing` bằng 0. Đây sẽ là kết quả của chúng ta.
+
+2. Lặp qua các phần tử của mảng A và thực hiện phép XOR với mỗi phần tử và chỉ số (i):
+
+   ```plaintext
+   for i từ 0 đến n-1:
+       missing ^= i ^ A[i]
+   ```
+
+   Dưới đây là những gì xảy ra trong mỗi lần lặp:
+   - `i` chạy từ 0 đến n-1, bao phủ tất cả các giá trị có thể trong khoảng [0, n-1].
+   - `A[i]` cung cấp cho chúng ta các phần tử trong mảng.
+   - Chúng ta thực hiện phép XOR giữa `i` và `A[i]`, hiệu quả loại bỏ những số đã có trong mảng. Nếu có một số bị thiếu, chỉ số `i` của nó sẽ là phần duy nhất còn lại trong biến `missing`.
+
+3. Sau khi vòng lặp kết thúc, biến `missing` sẽ chứa số bị thiếu.
+
+4. Trả về giá trị của `missing` như kết quả.
+
+Thuật toán này lặp qua mảng một lần, thực hiện một số lượng thao tác cố định (XOR và lấy chỉ số) cho mỗi phần tử, dẫn đến độ phức tạp thời gian là O(n). Nó chỉ sử dụng O(1) không gian bổ sung vì nó thay đổi biến `missing` trực tiếp. Ý tưởng ở đây là XOR tất cả các số từ 0 đến n-1 và XOR chúng với tất cả các phần tử trong mảng sẽ loại bỏ tất cả các số đã có trong mảng, chỉ để lại số bị thiếu trong biến `missing`.
+
+
+
 //////////////////// C-4.49
 
+"Bằng chứng" được cung cấp để khẳng định rằng hàm Fibonacci, F(n), có thể được biểu diễn bằng O(n) có một sai sót cơ bản. Vấn đề nằm ở cách áp dụng sai sót của sự giả thuyết quy nạp và giả định của tuyên bố.
 
+1. Trường Hợp Cơ Bản: Trường hợp cơ bản được nêu ra cho n ≥ 2, điều này không có vấn đề. Tuy nhiên, "bằng chứng" này không hoàn chỉnh vì nó không bao gồm trường hợp cơ bản trong bước quy nạp, điều này là cần thiết để có một bằng chứng quy nạp toán học hợp lệ.
 
+2. Bước Quy Nạp: Bước quy nạp bắt đầu bằng việc giả định rằng tuyên bố đúng cho n < n, nhưng đó là sai vì nó bắt đầu với biến sai. Nó nên giả định rằng tuyên bố đúng cho n = k - 1, sau đó chứng minh cho n = k.
 
+3. Phương Trình Không Hợp Lệ: Phương trình được trình bày, n * F(n) = F(n^2) + F(n^1), không chính xác cho dãy Fibonacci. Dãy Fibonacci được định nghĩa là F(n) = F(n-1) + F(n-2), không phải là F(n) = F(n^2) + F(n^1).
 
+4. Áp Dụng Sai Sót Của O-notation: Ngay cả khi phương trình đúng, cách áp dụng O-notation không chính xác. O-notation không phân phối qua phép cộng như được đề xuất trong câu "F(n) là O((n^2) + (n^1))." Thay vào đó, bạn nên áp dụng O-notation cho từng thành phần riêng lẻ và sau đó tổng hợp chúng lại.
 
-
-
-
-
-
+Tóm lại, "bằng chứng" được cung cấp bao gồm nhiều lỗi, bao gồm việc sử dụng sai sót của quy nạp toán học, một phương trình không chính xác và việc áp dụng sai sót của O-notation. Để chứng minh rằng F(n) là O(n), cần áp dụng đúng một phương pháp chứng minh toán học hoặc quy trình chứng minh khắc kheo hơn.
